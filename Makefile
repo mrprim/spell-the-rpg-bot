@@ -14,21 +14,21 @@ start:
 	npm run build
 	npm start
 
-# start-prod: build
-# 	forever stopall
-# 	forever start -a -l fc.log -o fc.out.log -e fc.err.log build/index.js
+start-prod: build
+	if forever list | grep 'spell-bot'; then forever stop spell-bot; fi
+	forever --uid spell-bot start -a -l spell-bot.log -o spell-bot.out.log -e spell-bot.err.log build/index.js
 
-# deploy:
-# 	rm -rf deployable
-# 	mkdir deployable
-# 	cp -rf src deployable/src
-# 	cp Makefile deployable/Makefile
-# 	cp package.json deployable/package.json
-# 	cp package-lock.json deployable/package-lock.json
-# 	ssh pi@pi "rm -rf ~/server/friend-computer-discord-app/src"
-# 	scp -r ~/git/friend-computer-discord-app/deployable/* pi@pi:~/server/friend-computer-discord-app/
-# 	rm -rf deployable
-# 	ssh pi@pi 'bash -i -c "cd ~/server/friend-computer-discord-app &&  make start-prod"'
+deploy:
+	rm -rf deployable
+	mkdir deployable
+	cp -rf src deployable/src
+	cp Makefile deployable/Makefile
+	cp package.json deployable/package.json
+	cp package-lock.json deployable/package-lock.json
+	ssh pi@pi "rm -rf ~/server/spell-bot/src"
+	scp -r ~/git/spell-the-rpg-bot/deployable/* pi@pi:~/server/spell-bot/
+	rm -rf deployable
+	ssh pi@pi 'bash -i -c "cd ~/server/spell-bot &&  make start-prod"'
 
 stop-server:
-	ssh pi@pi 'bash -i -c "forever stopall"'
+	ssh pi@pi 'bash -i -c "if forever list | grep \'spell-bot\'; then forever stop spell-bot; fi"'

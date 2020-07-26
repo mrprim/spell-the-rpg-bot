@@ -1,6 +1,7 @@
 import draw from './draw'
+import help from './help'
 
-module.exports = {
+export {
   draw,
-  help: msg => msg.send('Help Message')
+  help
 }
