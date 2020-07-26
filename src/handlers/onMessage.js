@@ -46,7 +46,7 @@ export default msg => {
       const handler = commands[command]
 
       if (!handler) {
-        msg.reply(`[${command}] is not a valid command.`)
+        msg.reply(`[${command}] is not a valid command.  Type \`/spell help\` for instructions on available commands.`)
         err(`[${command}] is not a valid command.`)
         return
       }
