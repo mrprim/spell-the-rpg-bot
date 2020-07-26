@@ -9,5 +9,5 @@ export default (msg, data) => {
   const count = roll(args[0])
   const tiles = bag.draw(count).map(v => emojis[v])
 
-  msg.channel.send(`<@!${msg.client.user.id}> drew ${count} letters: ${tiles.join(' ')}`)
+  msg.channel.send(`<@!${msg.member.id}> drew ${count} letters: ${tiles.join(' ')}`)
 }

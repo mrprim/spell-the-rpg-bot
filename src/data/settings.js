@@ -5,7 +5,7 @@ const EXTENSION = 'json'
 
 export const initialValues = {
   active: true,
-  commandPrefix: '/fc'
+  commandPrefix: '/spell'
 }
 
 const fileName = serverId => `${serverId}.${TYPE}.${EXTENSION}`
