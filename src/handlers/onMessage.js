@@ -1,6 +1,7 @@
 // import { log } from '../utils/logger'
 import * as commands from '../commands'
 import { read as readSettings, write as writeSettings } from '../data/settings'
+import { read as readGuilds, write as writeGuilds } from '../data/guilds'
 import { err } from '../utils/logger'
 
 const isThisBot = msg => msg.member.id === msg.client.user.id
@@ -14,8 +15,22 @@ const getSettings = guildId => {
   return readSettings(guildId)
 }
 
+const storeGuild = guild => {
+  const guilds = readGuilds() || {}
+  if (guilds[guild.id] && !guilds[guild.id].left) {
+    return
+  }
+
+  guilds[guild.id] = {
+    name: guild.name,
+    joined: new Date().toISOString()
+  }
+  writeGuilds(guilds)
+}
+
 export default msg => {
   const settings = getSettings(msg.guild.id)
+  storeGuild(msg.guild)
 
   if (isThisBot(msg)) {
     return
