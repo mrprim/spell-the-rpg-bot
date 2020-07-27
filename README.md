@@ -19,3 +19,7 @@ To draw letter tiles send one of the following messages:
 ```
 
 <img src="resources/media/spell-bot-example.png" alt="Usage Example" />
+
+## License
+
+[MIT](https://github.com/WilianZilv/reactron/blob/master/LICENSE)
