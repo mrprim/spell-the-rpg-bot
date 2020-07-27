@@ -1,8 +1,8 @@
-# Spell Bot
-
 <p align="center">
-  <img src="resources/media/spell-logo-transparent.png" width="200px"  alt="Spell: the RPG Logo" />
+  <img src="resources/media/spell-bot-logo-round.png" width="200px"  alt="Spell: the RPG Logo" />
 </p>
+
+# Spell Bot
 
 **Spell Bot** is a Discord bot for playing [__**Spell: the RPG**__](https://whimsymachinegames.com/2019/08/29/spell-the-rpg/) from Whimsy Machine Games.
 
@@ -19,6 +19,10 @@ To draw letter tiles send one of the following messages:
 ```
 
 <img src="resources/media/spell-bot-example.png" alt="Usage Example" />
+
+<p align="center">
+  <img src="resources/media/spell-logo-transparent.png" width="200px"  alt="Spell: the RPG Logo" />
+</p>
 
 ## License
 [MIT](LICENSE)
