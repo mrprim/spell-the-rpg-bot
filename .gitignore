@@ -4,4 +4,4 @@ build
 secrets
 storage
 deployable
-logs
+logs/log
