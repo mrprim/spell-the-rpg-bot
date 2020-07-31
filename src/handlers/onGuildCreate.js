@@ -2,7 +2,7 @@ import { log } from '../utils/logger'
 import { read, write } from '../data/guilds'
 
 export default guild => {
-  log('Joined a new guild: ' + guild.name)
+  log('JOIN_GUILD', { guildName: guild.name, guildId: guild.id })
   const guilds = read() || {}
   guilds[guild.id] = {
     name: guild.name,

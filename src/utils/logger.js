@@ -1,12 +1,14 @@
-const PREFIX = '🔠'
-const ERR_PREFIX = '❌'
+import { createLogger, transports } from 'winston'
+
+const logger = createLogger({
+  transports: [
+    new transports.Console(),
+    new transports.File({ filename: 'logs/log' })
+  ]
+})
 
 const now = () => new Date().toISOString()
 
-const print = (...msg) => console.log(now(), ...msg)
+export const log = (action, data = {}) => logger.log({ ...data, ts: now(), level: 'info', action })
 
-export const log = (...msg) => print(PREFIX, msg.join(' '))
-
-export const err = (...msg) => print(ERR_PREFIX, msg.join(' '))
-
-export const request = (user, userID, msg) => log(`Incoming Message from ${user}:${userID} - "${msg}"`)
+export const err = (action, data = {}) => logger.log({ ...data, ts: now(), level: 'error', action })

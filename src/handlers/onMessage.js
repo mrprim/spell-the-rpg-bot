@@ -2,7 +2,7 @@
 import * as commands from '../commands'
 import { read as readSettings, write as writeSettings } from '../data/settings'
 import { read as readGuilds, write as writeGuilds } from '../data/guilds'
-import { err } from '../utils/logger'
+import { log, err } from '../utils/logger'
 
 const isThisBot = msg => msg.member.id === msg.client.user.id
 
@@ -62,13 +62,15 @@ export default msg => {
 
       if (!handler) {
         msg.reply(`[${command}] is not a valid command.  Type \`/spell help\` for instructions on available commands.`)
-        err(`[${command}] is not a valid command.`)
+        err(msg.guild.id, msg.member.displayName, `[${command}] is not a valid command.`)
         return
       }
 
+      log('ON_MESSAGE_COMMAND', { command, message: msg.content, guildId: msg.guild.id, channelId: msg.channel.id, username: msg.member.displayName })
+
       handler(msg, data)
     } catch (e) {
-      err('error handling "' + msg.content + '"', e)
+      err('ON_MESSAGE_ERROR', { error: e, command: msg.content, guildId: msg.guild.id, channelId: msg.channel.id, username: msg.member.displayName })
     }
   }
 }

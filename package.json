@@ -23,7 +23,8 @@
     "@mrprim/tile-bag": "0.0.12",
     "discord.js": "^12.2.0",
     "fuse.js": "^6.4.0",
-    "regenerator-runtime": "^0.13.5"
+    "regenerator-runtime": "^0.13.5",
+    "winston": "^3.3.3"
   },
   "standard": {
     "env": [

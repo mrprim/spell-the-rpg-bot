@@ -4,3 +4,4 @@ build
 secrets
 storage
 deployable
+logs

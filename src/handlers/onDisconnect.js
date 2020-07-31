@@ -1,5 +1,5 @@
-import { log } from '../utils/logger'
+import { err } from '../utils/logger'
 
-export default (err, code) => {
-  log(`Disconnected [${'"' + err + '"' || 'code:' + code}]`)
+export default (error, code) => {
+  err('BOT_DISCONNECTED', { error, code })
 }
