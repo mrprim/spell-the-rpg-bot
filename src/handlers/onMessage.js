@@ -70,7 +70,7 @@ export default msg => {
 
       handler(msg, data)
     } catch (e) {
-      err('ON_MESSAGE_ERROR', { error: e, command: msg.content, guildId: msg.guild.id, channelId: msg.channel.id, username: msg.member.displayName })
+      err('ON_MESSAGE_ERROR', { error: e, message: msg.content, guildId: msg.guild.id, channelId: msg.channel.id, username: msg.member.displayName })
     }
   }
 }
