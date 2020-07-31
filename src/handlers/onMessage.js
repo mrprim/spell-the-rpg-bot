@@ -62,7 +62,7 @@ export default msg => {
 
       if (!handler) {
         msg.reply(`[${command}] is not a valid command.  Type \`/spell help\` for instructions on available commands.`)
-        err(msg.guild.id, msg.member.displayName, `[${command}] is not a valid command.`)
+        err('ON_MESSAGE_INVALID', { command, message: msg.content, guildId: msg.guild.id, username: msg.member.displayName, channelId: msg.channel.id })
         return
       }
 
