@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./build/index.js",
     "build": "babel ./src -d ./build",
-    "log": "node ./logs/index.js",
+    "logs": "node ./churchill.js",
     "test": "jest"
   },
   "author": "",

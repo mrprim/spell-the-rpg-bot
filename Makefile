@@ -1,4 +1,4 @@
-.PHONY:	clean install start
+.PHONY:	clean install start logs
 
 install:
 	npm ci
@@ -22,6 +22,7 @@ deploy:
 	rm -rf deployable
 	mkdir deployable
 	cp -rf src deployable/src
+	cp churchill.js deployable/churchill.js
 	cp Makefile deployable/Makefile
 	cp ./.babelrc deployable/.babelrc
 	cp package.json deployable/package.json
@@ -34,3 +35,6 @@ deploy:
 
 stop-server:
 	ssh pi@pi 'bash -i -c "if forever list | grep \'spell-bot\'; then forever stop spell-bot; fi"'
+
+logs:
+	ssh pi@pi 'bash -i -c "cd ~/server/spell-bot && npm run logs"'
