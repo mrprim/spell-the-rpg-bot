@@ -62,15 +62,15 @@ export default msg => {
 
       if (!handler) {
         msg.reply(`[${command}] is not a valid command.  Type \`/spell help\` for instructions on available commands.`)
-        err('ON_MESSAGE_INVALID', { command, message: msg.content, guildId: msg.guild.id, username: msg.member.displayName, channelId: msg.channel.id })
+        err('ON_MESSAGE_INVALID', { command, message: msg.content, guildId: msg.guild.id, username: msg.member.displayName, userId: msg.member.id, channelId: msg.channel.id })
         return
       }
 
-      log('ON_MESSAGE_COMMAND', { command, message: msg.content, guildId: msg.guild.id, channelId: msg.channel.id, username: msg.member.displayName })
+      log('ON_MESSAGE_COMMAND', { command, message: msg.content, guildId: msg.guild.id, channelId: msg.channel.id, username: msg.member.displayName, userId: msg.member.id })
 
       handler(msg, data)
     } catch (e) {
-      err('ON_MESSAGE_ERROR', { error: e, message: msg.content, guildId: msg.guild.id, channelId: msg.channel.id, username: msg.member.displayName })
+      err('ON_MESSAGE_ERROR', { error: e, message: msg.content, guildId: msg.guild.id, channelId: msg.channel.id, username: msg.member.displayName, userId: msg.member.id })
     }
   }
 }
