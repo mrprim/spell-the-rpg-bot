@@ -1,7 +1,7 @@
 const lineReader = require('line-reader')
 const moment = require('moment')
 
-lineReader.eachLine('./logs/log', function (line) {
+lineReader.eachLine('../logs/log', function (line) {
   try {
     const val = JSON.parse(line)
     handleLine(val)

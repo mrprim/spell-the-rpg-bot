@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./build/index.js",
+    "start": "bash ./scripts/start.sh",
     "build": "babel ./src -d ./build",
-    "logs": "node ./churchill.js",
+    "logs": "node ./scripts/churchill.js",
+    "metrics": "node ./scripts/metrics.js",
+    "deploy": "bash ./scripts/deploy.sh",
     "test": "jest"
   },
   "author": "",
