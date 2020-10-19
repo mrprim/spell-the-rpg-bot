@@ -6,3 +6,4 @@ storage
 deployable
 logs
 Makefile
+scripts/deploy.sh

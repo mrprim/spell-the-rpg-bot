@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "bash ./scripts/start.sh",
+    "forever": "bash ./scripts/start.sh -p",
     "build": "babel ./src -d ./build",
     "logs": "node ./scripts/churchill.js",
     "metrics": "node ./scripts/metrics.js",
@@ -22,6 +23,7 @@
     "jest": "^26.0.1",
     "line-reader": "^0.4.0",
     "moment": "^2.27.0",
+    "reverse-line-reader": "^0.2.6",
     "standard": "^14.3.4"
   },
   "dependencies": {

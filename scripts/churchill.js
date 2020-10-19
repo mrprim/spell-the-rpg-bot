@@ -1,16 +1,23 @@
-const lineReader = require('line-reader')
+const lineReader = require('reverse-line-reader')
 const moment = require('moment')
 
-lineReader.eachLine('../logs/log', function (line) {
-  try {
-    const val = JSON.parse(line)
-    handleLine(val)
-  } catch {
-    log('???')
-    log(colors.DIM, line)
-  }
-  console.log()
-})
+const run = async () => {
+  let rowsLeft = 100
+  const logs = []
+
+  await lineReader.eachLine('./logs/log', line => {
+    rowsLeft--
+    try {
+      logs.unshift(JSON.parse(line))
+    } catch {
+      log('???')
+      log(colors.DIM, line)
+    }
+    if (!rowsLeft) return false
+  })
+
+  logs.forEach(handleLine)
+}
 
 const handleLine = ({ ts, level, action = '???', username = '', ...data }) => {
   const header = []
@@ -23,6 +30,7 @@ const handleLine = ({ ts, level, action = '???', username = '', ...data }) => {
   log(...header)
 
   Object.entries(data).map(([k, v]) => log(colors.DIM, k, ':', v))
+  log()
 }
 
 const log = (...x) => console.log(colors.RESET, ...(x.map(z => z || '')))
@@ -52,3 +60,5 @@ const colors = {
   BG_CYAN: '\x1b[46m',
   BG_WHITE: '\x1b[47m'
 }
+
+run()
