@@ -22,7 +22,7 @@
     "@babel/runtime": "^7.10.2",
     "jest": "^26.0.1",
     "line-reader": "^0.4.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "reverse-line-reader": "^0.2.6",
     "standard": "^14.3.4"
   },
